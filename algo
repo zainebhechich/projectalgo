@@ -1,0 +1,33 @@
+ALGORITHM Sentenceword
+VAR
+    sentence: STRING;
+    char_count, word_count, voyel_count: INTEGER;
+    word: BOOLEAN;
+    i:INTEGER;
+BEGIN
+    char_count := 0;  
+    word_count := 0;  
+    voyel_count := 0; 
+    word := FALSE; 
+    WRITE("Enter sentence");
+    READ(sentence);
+    FOR i from 0 to Length.sentence -1 DO
+        char_count := char_count + 1;
+        IF sentence[i] IN ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U') THEN
+            voyel_count := voyel_count + 1;
+        END_IF
+        IF sentence[i] = ' ' AND word = TRUE THEN
+            word_count := word_count + 1;
+            word := FALSE; 
+        ELSE IF sentence[i] != ' ' THEN
+            word := TRUE; 
+        END_IF
+    END_FOR
+    IF word = TRUE THEN
+        word_count := word_count + 1;
+    END_IF
+    WRITE("Length of the sentence: ", char_count);
+    WRITE("Number of words in the sentence: ", word_count);
+    WRITE("Number of voyels in the sentence: ", voyel_count);
+
+END
